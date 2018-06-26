@@ -76,7 +76,7 @@ export default class Gallery extends PureComponent {
         this.gestureResponder = createResponder({
             onMoveShouldSetPanResponder: (evt, gestureState) => {
                    const { dx, dy ,numberActiveTouches} = gestureState;
-                  if (Math.abs(dy) > Math.abs(dx) && numberActiveTouches<=1 && !this.scaled)) {
+                  if (Math.abs(dy) > Math.abs(dx) && numberActiveTouches<=1 && !this.scaled) {
                     return false;
                   }
                   return true;
