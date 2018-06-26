@@ -53,6 +53,7 @@ export default class Gallery extends PureComponent {
         this.getImageTransformer = this.getImageTransformer.bind(this);
         this.getViewPagerInstance = this.getViewPagerInstance.bind(this);
         this.activeImageResponder = this.activeImageResponder.bind(this);
+        this.scaled=false;
     }
 
     componentWillMount () {
@@ -73,8 +74,13 @@ export default class Gallery extends PureComponent {
         };
 
         this.gestureResponder = createResponder({
-            onStartShouldSetResponderCapture: (evt, gestureState) => true,
-            onStartShouldSetResponder: (evt, gestureState) => true,
+            onMoveShouldSetPanResponder: (evt, gestureState) => {
+                   const { dx, dy ,numberActiveTouches} = gestureState;
+                  if (Math.abs(dy) > Math.abs(dx) && numberActiveTouches<=1 && !this.scaled)) {
+                    return false;
+                  }
+                  return true;
+            },
             onResponderGrant: this.activeImageResponder,
             onResponderMove: (evt, gestureState) => {
                 if (this.firstMove) {
@@ -230,6 +236,16 @@ export default class Gallery extends PureComponent {
             <TransformableImage
               onViewTransformed={((transform) => {
                   onViewTransformed && onViewTransformed(transform, pageId);
+                    if(transform && transform.scale==1){
+                        if(this.scaled){
+                            this.scaled=false;
+                        }
+                    }
+            else{
+                                        if(!this.scaled){
+                            this.scaled=true;
+                        }
+            }
               })}
               onTransformGestureReleased={((transform) => {
                   // need the 'return' here because the return value is checked in ViewTransformer
