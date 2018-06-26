@@ -229,7 +229,19 @@ export default class Gallery extends PureComponent {
         return (
             <TransformableImage
               onViewTransformed={((transform) => {
-                  onViewTransformed && onViewTransformed(transform, pageId);
+            if(transform && transform.scale!=1){
+                if(!this.transformed){
+                    this.transformed=true
+                    onViewTransformed && onViewTransformed(true);
+                }
+            }
+            else{
+                                if(this.transformed){
+                    this.transformed=false
+                    onViewTransformed && onViewTransformed(false);
+                }
+
+            }
               })}
               onTransformGestureReleased={((transform) => {
                   // need the 'return' here because the return value is checked in ViewTransformer
