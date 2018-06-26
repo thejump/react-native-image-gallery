@@ -229,7 +229,12 @@ export default class Gallery extends PureComponent {
         return (
             <TransformableImage
               onViewTransformed={((transform) => {
-            global.warn('a1',{transform,a:transform.scale==1,b:transform,c:transform.scale=='1',d:this.transformed})
+            if(transform.scale==1 && this.transformed){
+            global.warn('addd1',{transform,a:transform.scale==1,b:transform,c:transform.scale=='1',d:this.transformed})
+            }
+            else if(transform.scale!=1 && !this.transformed){
+            global.warn('addd2',{transform,a:transform.scale==1,b:transform,c:transform.scale=='1',d:this.transformed})
+            }
             if(transform && transform.scale!=1){
                 global.warn('a2')
                 if(!this.transformed){
