@@ -229,29 +229,18 @@ export default class Gallery extends PureComponent {
         return (
             <TransformableImage
               onViewTransformed={((transform) => {
-            if(transform.scale==1 && this.transformed){
-            global.warn('addd1',{pageId,pageData,transform,a:transform.scale==1,b:transform,c:transform.scale=='1',d:this.transformed})
-            }
-            else if(transform.scale!=1 && !this.transformed){
-            global.warn('addd2',{pageId,pageData,transform,a:transform.scale==1,b:transform,c:transform.scale=='1',d:this.transformed})
-            }
-            if(transform && transform.scale!=1){
-                global.warn('a2')
-                if(!this.transformed){
-                    global.warn('a3')
+            let isScaled=(transform && transform.scale!=1)
+            if(!this.transformed && isScaled){
                     this.transformed=true
+                this.transformedPage=pageId;
                     onViewTransformed && onViewTransformed(true);
-                }
             }
-            else{
-                global.warn('a4')
-                                if(this.transformed){
-                                    global.warn('a5')
-                    this.transformed=false
-                    onViewTransformed && onViewTransformed(false);
-                }
-
-            }
+            else if(!isScaled && this.transformed && this.transformedPage==pageId){
+              this.transformed=false
+                this.transformedPage=undefined;
+                    onViewTransformed && onViewTransformed(false);     
+                    }
+           
               })}
               onTransformGestureReleased={((transform) => {
                   // need the 'return' here because the return value is checked in ViewTransformer
