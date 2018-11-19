@@ -136,7 +136,7 @@ export default class Gallery extends PureComponent {
             onMove: (evt, gestureState) => {
                 const currentImageTransformer = this.getCurrentImageTransformer();
                 currentImageTransformer && currentImageTransformer.onResponderMove(evt, gestureState);
-                if(Math.abs(gestureState.dx)>10 || Math.abs(gestureState.dy)>10){
+                if(Math.abs(gestureState.dx)>10 || Math.abs(gestureState.dy)>10 || gestureState.numberActiveTouches>1){
                     clearTimeout(this._longPressTimeout);
                 }
             },
