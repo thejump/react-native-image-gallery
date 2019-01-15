@@ -319,7 +319,6 @@ export default class ViewPager extends PureComponent {
                   {...this.props.flatListProps}
                   style={[{ flex: 1 }, scrollViewStyle]}
                   ref={'innerFlatList'}
-                  keyExtractor={this.keyExtractor}
                   scrollEnabled={false}
                   horizontal={true}
                   data={pageDataArray}
