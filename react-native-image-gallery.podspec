@@ -10,6 +10,8 @@ Pod::Spec.new do |s|
                   react-native-image-gallery
                    DESC
   s.license      = "MIT"
+s.homepage="http://www.thejump.com"
+
   # s.license    = { :type => "MIT", :file => "FILE_LICENSE" }
   s.authors      = { "Your Name" => "yourname@email.com" }
   s.platforms    = { :ios => "9.0", :tvos => "10.0" }
