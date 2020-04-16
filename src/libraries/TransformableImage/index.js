@@ -1,29 +1,9 @@
 import React, { PureComponent } from 'react';
-import { View, Text, Image, ViewPropTypes } from 'react-native';
-import PropTypes from 'prop-types';
+import { View, Text, Image } from 'react-native';
 import ViewTransformer from '../ViewTransformer';
 
 export default class TransformableImage extends PureComponent {
-    static propTypes = {
-        image: PropTypes.shape({
-            source: PropTypes.oneOfType([
-                PropTypes.object,
-                PropTypes.number
-            ]).isRequired,
-            dimensions: PropTypes.shape({ width: PropTypes.number, height: PropTypes.number })
-        }).isRequired,
-        style: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
-        onLoad: PropTypes.func,
-        onLoadStart: PropTypes.func,
-        enableTransform: PropTypes.bool,
-        enableScale: PropTypes.bool,
-        enableTranslate: PropTypes.bool,
-        onTransformGestureReleased: PropTypes.func,
-        onViewTransformed: PropTypes.func,
-        imageComponent: PropTypes.func,
-        resizeMode: PropTypes.string,
-        errorComponent: PropTypes.func
-    };
+    
 
     static defaultProps = {
         enableTransform: true,
