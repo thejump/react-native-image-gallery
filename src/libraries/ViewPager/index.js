@@ -2,11 +2,9 @@ import React, { PureComponent } from 'react';
 import {
     View,
     FlatList,
-    ViewPropTypes,
     InteractionManager,
     Dimensions
 } from 'react-native';
-import PropTypes from 'prop-types';
 import Scroller from '../Scroller';
 import { createResponder } from '../GestureResponder';
 
@@ -17,22 +15,7 @@ const MIN_FLING_VELOCITY = 0.5;
 const { width, height } = Dimensions.get('window');
 
 export default class ViewPager extends PureComponent {
-    static propTypes = {
-        ...View.propTypes,
-        initialPage: PropTypes.number,
-        pageMargin: PropTypes.number,
-        scrollViewStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
-        scrollEnabled: PropTypes.bool,
-        renderPage: PropTypes.func,
-        pageDataArray: PropTypes.array,
-        initialListSize: PropTypes.number,
-        removeClippedSubviews: PropTypes.bool,
-        onPageSelected: PropTypes.func,
-        onPageScrollStateChanged: PropTypes.func,
-        onPageScroll: PropTypes.func,
-        flatListProps: PropTypes.object
-    };
-
+   
     static defaultProps = {
         initialPage: 0,
         pageMargin: 0,
