@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { View, ViewPropTypes } from 'react-native';
-import PropTypes from 'prop-types';
+import { View } from 'react-native';
+
 import { createResponder } from './libraries/GestureResponder';
 import TransformableImage from './libraries/TransformableImage';
 import ViewPager from './libraries/ViewPager';
@@ -10,23 +10,7 @@ const DEFAULT_FLAT_LIST_PROPS = {
 };
 
 export default class Gallery extends PureComponent {
-    static propTypes = {
-        ...View.propTypes,
-        images: PropTypes.arrayOf(PropTypes.object),
-        initialPage: PropTypes.number,
-        scrollViewStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
-        pageMargin: PropTypes.number,
-        onPageSelected: PropTypes.func,
-        onPageScrollStateChanged: PropTypes.func,
-        onPageScroll: PropTypes.func,
-        onSingleTapConfirmed: PropTypes.func,
-        onGalleryStateChanged: PropTypes.func,
-        onLongPress: PropTypes.func,
-        removeClippedSubviews: PropTypes.bool,
-        imageComponent: PropTypes.func,
-        errorComponent: PropTypes.func,
-        flatListProps: PropTypes.object
-    };
+   
 
     static defaultProps = {
         removeClippedSubviews: true,
