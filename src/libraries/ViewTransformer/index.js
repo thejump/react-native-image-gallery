@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactNative, { View, Animated, Easing, NativeModules } from 'react-native';
 import Scroller from '../Scroller';
-import PropTypes from 'prop-types';
 import { createResponder } from '../GestureResponder';
 import { Rect, Transform, transformedRect, availableTranslateSpace, fitCenterRect, alignedRect, getTransform } from './TransformUtils';
 
@@ -9,21 +8,7 @@ export default class ViewTransformer extends React.Component {
     static Rect = Rect;
     static getTransform = getTransform;
 
-    static propTypes = {
-        enableTransform: PropTypes.bool,
-        enableScale: PropTypes.bool,
-        enableTranslate: PropTypes.bool,
-        maxOverScrollDistance: PropTypes.number,
-        maxScale: PropTypes.number,
-        contentAspectRatio: PropTypes.number,
-        enableResistance: PropTypes.bool,
-        onViewTransformed: PropTypes.func,
-        onTransformGestureReleased: PropTypes.func,
-        onSingleTapConfirmed: PropTypes.func,
-        onLayout: PropTypes.func,
-        onTransformStart: PropTypes.func,
-        children: PropTypes.node
-    };
+   
 
     static defaultProps = {
         maxOverScrollDistance: 20,
